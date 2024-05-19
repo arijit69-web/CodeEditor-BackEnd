@@ -17,7 +17,12 @@ const judge0Config = {
         'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
     }
 };
-
+app.get("/", (req, res) => {
+    return res.json({
+        success: true,
+        message: `Coding Arrow Code Editor is Up & Running at ${PORT}`
+    });
+});
 app.post('/submit', async (req, res) => {
     var languageId = 0
     if (req.body.languageType === 'cpp') {
@@ -93,6 +98,6 @@ function decodeBase64(base64) {
     for (let i = 0; i < length; i++) {
         bytes[i] = text.charCodeAt(i);
     }
-    const decoder = new TextDecoder(); 
+    const decoder = new TextDecoder();
     return decoder.decode(bytes);
 }
